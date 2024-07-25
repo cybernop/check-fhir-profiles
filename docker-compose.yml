@@ -1,0 +1,7 @@
+services:
+  fhir-check:
+    image: fhir-check
+    build:
+      args:
+        - SUSHI_VERSION=3.11.0
+        - FIRELY_TERMIN_VERSION=3.1.0
