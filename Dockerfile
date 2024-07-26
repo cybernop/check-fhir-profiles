@@ -25,6 +25,7 @@ RUN . $NVM_DIR/nvm.sh && npm install --global fsh-sushi@$SUSHI_VERSION
 RUN dotnet tool install --global Firely.Terminal --version $FIRELY_TERMIN_VERSION
 
 COPY check.sh /root/check.sh
+RUN chmod a+rx /root
 
 ENV NODE_PATH=$NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:/root/.dotnet/tools:$PATH
