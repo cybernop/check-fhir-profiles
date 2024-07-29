@@ -22,7 +22,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
 
 RUN dotnet tool install --global Firely.Terminal --version $FIRELY_TERMINAL_VERSION
 
-COPY check.sh /root/check.sh
+COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod a+rx /root
 
 ENV NODE_PATH=$NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
@@ -31,7 +31,7 @@ ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:/root/.dotnet/tools:$PATH
 ENV PROJECT_DIR=/project
 ENV SUSHI_ROOT=.
 
-ENTRYPOINT [ "/root/check.sh" ]
+ENTRYPOINT [ "/root/entrypoint.sh" ]
 
 
 FROM ghcr.io/cybernop/check-fhir-profiles:base

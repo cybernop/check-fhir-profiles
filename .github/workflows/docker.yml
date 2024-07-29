@@ -10,6 +10,7 @@ on:
     paths:
       - ".github/workflows/*.yaml"
       - "Dockerfile"
+      - "entrypoint.sh"
 
 env:
   # Use docker.io for Docker Hub if empty
