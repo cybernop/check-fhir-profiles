@@ -1,7 +1,13 @@
 services:
+  fhir-check-base:
+    image: ghcr.io/cybernop/check-fhir-profiles:base
+    build:
+      target: base
+      args:
+        - FIRELY_TERMINAL_VERSION=3.1.0
+
   fhir-check:
-    image: fhir-check
+    image: ghcr.io/cybernop/check-fhir-profiles:latest
     build:
       args:
         - SUSHI_VERSION=3.11.0
-        - FIRELY_TERMIN_VERSION=3.1.0

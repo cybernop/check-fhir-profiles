@@ -1,7 +1,6 @@
-FROM ubuntu
+FROM ubuntu AS base
 
-ARG SUSHI_VERSION
-ARG FIRELY_TERMIN_VERSION
+ARG FIRELY_TERMINAL_VERSION
 ARG NODE_VERSION=20.16.0
 ARG DOTNET_VERSION=6.0
 
@@ -21,8 +20,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
     && . $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION
 
-RUN . $NVM_DIR/nvm.sh && npm install --global fsh-sushi@$SUSHI_VERSION
-RUN dotnet tool install --global Firely.Terminal --version $FIRELY_TERMIN_VERSION
+RUN dotnet tool install --global Firely.Terminal --version $FIRELY_TERMINAL_VERSION
 
 COPY check.sh /root/check.sh
 RUN chmod a+rx /root
@@ -34,3 +32,10 @@ ENV PROJECT_DIR=/project
 ENV SUSHI_ROOT=.
 
 ENTRYPOINT [ "/root/check.sh" ]
+
+
+FROM ghcr.io/cybernop/check-fhir-profiles:base
+
+ARG SUSHI_VERSION
+
+RUN . $NVM_DIR/nvm.sh && npm install --global fsh-sushi@$SUSHI_VERSION
