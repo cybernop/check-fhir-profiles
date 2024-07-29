@@ -14,3 +14,24 @@ With `<sushi version>` one can specify which version of FSH Sushi to use for che
 * `3.11.0`
 
 If your sushi project is not located at the root of the repository, one can specify its relative path with `-e SUSHI_ROOT=<sushi root>`.
+
+
+## Script
+
+A convenience script can be dwonloaded
+
+```bash
+wget https://raw.githubusercontent.com/cybernop/check-fhir-profiles/main/scripts/fhir-check.sh
+```
+
+set executable permissions
+
+```bash
+chmod a+x fhir-check.sh
+```
+
+Call the script with
+
+```bash
+[SUSHI_VERSION=<sushi version>] fhir-check.sh [<repository dir> [<sushi root>]]
+```
