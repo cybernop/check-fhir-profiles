@@ -10,6 +10,7 @@ sushi .
 retVal=$?
 if [ $retVal -ne 0 ]; then
     git checkout HEAD  -- fsh-generated
+    printf "\nBuild failed! \n"
     exit $retVal
 fi
 
@@ -18,4 +19,9 @@ git diff --exit-code
 retVal=$?
 
 git checkout HEAD  -- $SUSHI_ROOT/fsh-generated
+
+if [ $retVal -ne 0 ]; then
+    printf "\nBuild different! \n"
+fi
+
 exit $retVal
