@@ -21,7 +21,9 @@ retVal=$?
 git checkout HEAD  -- $SUSHI_ROOT/fsh-generated
 
 if [ $retVal -ne 0 ]; then
-    printf "\nBuild different! \n"
+    printf "\nBuilt different! \n"
+else
+    printf "\nBuilt up-to-date! \n"
 fi
 
 exit $retVal

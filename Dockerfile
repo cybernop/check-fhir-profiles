@@ -10,16 +10,7 @@ RUN apt update \
     wget \
     git \
     # .NET dependencies
-    ca-certificates \
-    libc6 \
-    libgcc-s1 \
-    libgssapi-krb5-2 \
-    libicu74 \
-    liblttng-ust1 \
-    libssl3 \
-    libstdc++6 \
-    libunwind8 \
-    zlib1g
+    libicu74
 
 # Install .NET SDK
 RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
